@@ -26,11 +26,10 @@ class GildedRoseTest {
     GildedRose app = new GildedRose(items);
 
     @Test
-    void foo() {
-        Item[] items = new Item[] { new Item("foo", 0, 0) };
-        GildedRose app = new GildedRose(items);
+    void agedBrieQualityBy1() {
         app.updateQuality();
-        assertEquals("foo", app.items[0].name);
+        
+        assertEquals(1, app.items[1].quality);
     }
     @Test
     void agedBrieQualityNegativeSellin() {

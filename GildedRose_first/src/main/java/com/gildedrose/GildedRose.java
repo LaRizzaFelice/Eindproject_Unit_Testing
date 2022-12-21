@@ -71,20 +71,17 @@ class GildedRose {
                                 items[i].quality = items[i].quality - 1;
                                 if (items[i].quality > 0 && items[i].name.contains("Conjured")) {
                                     items[i].quality = items[i].quality - 1;
+                                }
                             }
                         }
                     } else {
                         //Quality drops to 0 after the concert - only for tickets
                         items[i].quality = items[i].quality - items[i].quality;
                     }
-                } else {
-                    // adds 1 to quality of Aged Brie
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
-                    }
                 }
             }
         }
     }
 }
-}
+
+

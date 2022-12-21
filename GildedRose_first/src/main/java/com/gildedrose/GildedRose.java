@@ -16,13 +16,16 @@ class GildedRose {
         for (int i = 0; i < items.length; i++) {
             if (!items[i].name.equals("Aged Brie")
                     && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                //The Quality of an item is never negative
                 if (items[i].quality > 0) {
+                    //
                     if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
                         items[i].quality = items[i].quality - 1;
                     }
                 }
                 //talking about items which value rise each day (=Backstage Pass)
             } else {
+                //The Quality of an item is never more than 50
                 if (items[i].quality < 50) {
                     //first day of two : Quality increases by 2 when there are 10 days or less
                     items[i].quality = items[i].quality + 1;
@@ -49,10 +52,14 @@ class GildedRose {
                 items[i].sellIn = items[i].sellIn - 1;
             }
             if (items[i].sellIn < 0) {
+                // if name = Aged Brie, the go to ELSE
                 if (!items[i].name.equals("Aged Brie")) {
+                    //if name = backstage passes , then go to ELSE
                     if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (items[i].quality > 0) {
+                            //Sulfuras can not lose quality (so never -1 in quality)
                             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+                                //all items, beside Aged Brie, Backstage PAsses and Sulfuras lower 1 in quality
                                 items[i].quality = items[i].quality - 1;
                             }
                         }
@@ -61,6 +68,7 @@ class GildedRose {
                         items[i].quality = items[i].quality - items[i].quality;
                     }
                 } else {
+                    // adds 1 to quality of Aged Brie
                     if (items[i].quality < 50) {
                         items[i].quality = items[i].quality + 1;
                     }

@@ -58,7 +58,7 @@ class GildedRose {
             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
                 items[i].sellIn = items[i].sellIn - 1;
             }
-            //same code as first block under for loop - does the same!
+            // If the item is overdue, then lower its quality again by 1 (doubling its decrease)
             if (items[i].sellIn < 0) {
                 // if name = Aged Brie, the go to ELSE
                 if (!items[i].name.equals("Aged Brie")) {
@@ -69,6 +69,8 @@ class GildedRose {
                             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
                                 //all items, beside Aged Brie, Backstage Passes and Sulfuras lower 1 in quality
                                 items[i].quality = items[i].quality - 1;
+                                if (items[i].quality > 0 && items[i].name.contains("Conjured")) {
+                                    items[i].quality = items[i].quality - 1;
                             }
                         }
                     } else {

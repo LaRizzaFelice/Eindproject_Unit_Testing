@@ -4,7 +4,6 @@ class GildedRose {
     Item[] items;
 
     /**
-     *
      * @param items
      */
     public GildedRose(Item[] items) {
@@ -24,6 +23,9 @@ class GildedRose {
                     if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
                         //decrease quality of all items BESIDE Aged Brie, Backstage Passes and Sulfuras by 1
                         items[i].quality = items[i].quality - 1;
+                        if (items[i].quality > 0 && items[i].name.contains("Conjured")) {
+                            items[i].quality = items[i].quality - 1;
+                        }
                     }
 
                 }
@@ -82,4 +84,5 @@ class GildedRose {
             }
         }
     }
+}
 }

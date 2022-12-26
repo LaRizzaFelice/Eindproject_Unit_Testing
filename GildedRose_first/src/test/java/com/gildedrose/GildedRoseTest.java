@@ -49,7 +49,7 @@ class GildedRoseTest {
         assertEquals(0, app.items[0].sellIn);
     }
     @Test
-        // Aged Brie always increases in quality no matter the sellIn value
+        // Aged Brie always increases in quality, sellIn > 0 = double quality increase
     void agedBrieQualityNegativeSellin() {
         Item[] items = new Item[] { new Item("Aged Brie", -2, 4) };
         GildedRose app = new GildedRose(items);
@@ -57,7 +57,7 @@ class GildedRoseTest {
         assertEquals(6, app.items[0].quality);
     }
     @Test
-        // Aged Brie always increases in quality no matter the sellIn value
+        // Aged Brie always increases in quality, sellIn
     void agedBrieQualityPositiveSellin() {
         Item[] items = new Item[] { new Item("Aged Brie", 2, 4) };
         GildedRose app = new GildedRose(items);

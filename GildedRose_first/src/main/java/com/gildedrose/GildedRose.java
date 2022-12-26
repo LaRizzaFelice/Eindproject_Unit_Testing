@@ -56,7 +56,7 @@ class GildedRose {
     }
     private static void adjustQuality(Item item, int adjustment) {
         int newQuality = item.quality + adjustment;
-        boolean isInvalidRange = newQuality >= 50 && newQuality >= 0;
+        boolean isInvalidRange = newQuality <= 50 && newQuality >= 0;
         if(isInvalidRange){
             item.quality = newQuality;
         }

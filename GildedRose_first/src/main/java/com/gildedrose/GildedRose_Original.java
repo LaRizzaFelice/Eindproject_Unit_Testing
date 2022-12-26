@@ -1,12 +1,12 @@
 package com.gildedrose;
 
-public class GildedRose_Refactored {
+public class GildedRose_Original {
     Item[] items;
 
     /**
      * @param items
      */
-    public GildedRose_Refactored(Item[] items) {
+    public GildedRose_Original(Item[] items) {
         this.items = items;
     }
 

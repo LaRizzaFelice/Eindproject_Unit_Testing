@@ -5,28 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
-
-    Item[] items = new Item[] {
-            new Item("+5 Dexterity Vest", 10, 20), // 0
-            new Item("Aged Brie", 2, 0), // 1
-            new Item("Elixir of the Mongoose", 5, 7), // 2
-            new Item("Sulfuras, Hand of Ragnaros", 0, 80), // 3
-            new Item("Sulfuras, Hand of Ragnaros", -1, 80), // 4
-            new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20), // 5
-            new Item("Backstage passes to a TAFKAL80ETC concert", 3, 49), // 6
-            new Item("Backstage passes to a TAFKAL80ETC concert", 7, 49), // 7
-            new Item("Conjured Mana Cake", 3, 6), // 8
-            new Item("Conjured Mana Cake", -1, 6), // 9
-            new Item("Aged Brie", -2, 4), // 10
-            new Item("Backstage passes to a TAFKAL80ETC concert", -5, 49), // 11
-            new Item("Backstage passes to a TAFKAL80ETC concert", 3, 40), // 12
-            new Item("Backstage passes to a TAFKAL80ETC concert", 7, 40)}; // 13
-
-
     @Test
         // Quality of an item can never be negative
     void potentialNegativeQualityTest() {
-        Item[] items = new Item[] {new Item("Elixir of the Mongoose", 5, 0) };
+        Item[] items = new Item[] {new Item("Elixir of the Mongoose", 5, 0, true) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
@@ -34,7 +16,7 @@ class GildedRoseTest {
     @Test
         // SellIn value has to be decreased by 1 to all products except for Sulfuras
     void sellInChangeTest() {
-        Item[] items = new Item[] { new Item("Aged Brie", 0, 4) };
+        Item[] items = new Item[] { new Item("Aged Brie", 0, 4, false) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(-1, app.items[0].sellIn);
@@ -43,7 +25,7 @@ class GildedRoseTest {
     @Test
         // SellIn value has to be decreased by 1 to all products except for Sulfuras
     void sellInChangeTestSulfuras() {
-        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 0, 80) };
+        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 0, 80, false) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0, app.items[0].sellIn);
@@ -51,7 +33,7 @@ class GildedRoseTest {
     @Test
         // Aged Brie always increases in quality, sellIn > 0 = double quality increase
     void agedBrieQualityNegativeSellin() {
-        Item[] items = new Item[] { new Item("Aged Brie", -2, 4) };
+        Item[] items = new Item[] { new Item("Aged Brie", -2, 4, true) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(6, app.items[0].quality);
@@ -59,7 +41,7 @@ class GildedRoseTest {
     @Test
         // Aged Brie always increases in quality, sellIn
     void agedBrieQualityPositiveSellin() {
-        Item[] items = new Item[] { new Item("Aged Brie", 2, 4) };
+        Item[] items = new Item[] { new Item("Aged Brie", 2, 4, false) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(5, app.items[0].quality);
@@ -67,7 +49,7 @@ class GildedRoseTest {
     @Test
         // Sulfuras never changes quality, no matter the sellIn value
     void sulfurasZeroSellin() {
-        Item[] items = {new Item("Sulfuras, Hand of Ragnaros", 0, 80) };
+        Item[] items = {new Item("Sulfuras, Hand of Ragnaros", 0, 80, false) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(80, app.items[0].quality);

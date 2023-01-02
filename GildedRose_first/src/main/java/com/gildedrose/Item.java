@@ -15,6 +15,8 @@ public class Item {
 
     public boolean isLegendaryItem;
 
+
+
     public Item(String name, int sellIn, int quality, boolean isDegradable, boolean isConjuredItem, boolean isLegendaryItem) {
         this.name = name;
         this.sellIn = sellIn;

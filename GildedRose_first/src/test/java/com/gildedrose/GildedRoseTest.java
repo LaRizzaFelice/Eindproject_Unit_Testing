@@ -23,6 +23,15 @@ class GildedRoseTest {
     }
 
     @Test
+    void sellInChangeTestNormalitem() {
+        Item[] items = new Item[] { new Item("Elixir of the Mongoose", -1, 4, true, false, false) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(2, app.items[0].quality);
+    }
+
+
+    @Test
         // SellIn value has to be decreased by 1 to all products except for Sulfuras
     void sellInChangeTestSulfuras() {
         Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 0, 80, false, false, true) };
@@ -33,7 +42,7 @@ class GildedRoseTest {
     @Test
         // Aged Brie always increases in quality, sellIn > 0 = double quality increase
     void agedBrieQualityNegativeSellin() {
-        Item[] items = new Item[] { new Item("Aged Brie", -2, 4, false, false, false) };
+        Item[] items = new Item[]{ new Item("Aged Brie", -2, 4, false, false, false) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(6, app.items[0].quality);

@@ -63,16 +63,6 @@ public class GildedRose {
             if (doesDegrade) {
                 adjustQuality(item, degradeRate);
             }
-            if (item.name.equals(AGED_BRIE)) {
-                adjustQuality(item, 1);
-            //first step = local variable int adjustment
-                // item.quality + adjustment = put in new method, see below
-            } else {
-                //If sellIn BACKSTAGE = below 0 then reset to 0
-                if (item.name.equals(BACKSTAGE_PASSES)) {
-                    item.quality = item.quality - item.quality;
-                }
-            }
         }
     }
 

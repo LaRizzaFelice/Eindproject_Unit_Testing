@@ -11,11 +11,17 @@ public class Item {
 
     public boolean isDegradable;
 
-    public Item(String name, int sellIn, int quality, boolean isDegradable) {
+    public boolean isConjuredItem;
+
+    public boolean isLegendaryItem;
+
+    public Item(String name, int sellIn, int quality, boolean isDegradable, boolean isConjuredItem, boolean isLegendaryItem) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
         this.isDegradable = isDegradable;
+        this.isConjuredItem = isConjuredItem;
+        this.isLegendaryItem = isLegendaryItem;
     }
 
     @Override

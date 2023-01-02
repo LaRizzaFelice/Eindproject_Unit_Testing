@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Eindproject Unit Testing.iml" filepath="$PROJECT_DIR$/.idea/Eindproject Unit Testing.iml" />
       <module fileurl="file://$PROJECT_DIR$/GildedRose_first/gilded-rose-kata.iml" filepath="$PROJECT_DIR$/GildedRose_first/gilded-rose-kata.iml" />
-      <module fileurl="file://$PROJECT_DIR$/GildedRose_second/gilded-rose-kata (1).iml" filepath="$PROJECT_DIR$/GildedRose_second/gilded-rose-kata (1).iml" />
     </modules>
   </component>
 </project>

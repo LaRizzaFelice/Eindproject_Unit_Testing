@@ -45,7 +45,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{ new Item("Aged Brie", -2, 4, false, false, false) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(5, app.items[0].quality);
+        assertEquals(6, app.items[0].quality);
     }
     @Test
         // Aged Brie always increases in quality, sellIn

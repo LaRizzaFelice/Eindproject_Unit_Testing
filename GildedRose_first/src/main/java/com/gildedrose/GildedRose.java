@@ -32,35 +32,36 @@ public class GildedRose {
     //extracted constants and name them to have convention in our code
 
     private static void updateItemQuality(Item item) {
+        //checks if an item is expired
+        boolean isExpired = item.sellIn < 0 ? true : false;
         //degradeRate to degrade -2 or -1, if Conjured = -2 otherwise -1
-        int degradeRate = item.name.equals(CONJURED) ? -2 : -1;
+        int degradeRate = item.isConjuredItem ? -2 : -1;
         //following 3 items don't degrade until they go to zero, they don't degrade like normal products
         //boolean doesDegrade compares if one of the following is not one of those 3 items (BRIE/BACKSTAGE/SULFURAS)
-        boolean doesDegrade = !item.name.equals(AGED_BRIE) && !item.name.equals(BACKSTAGE_PASSES) && !item.name.equals(SULFURAS);
-        if (doesDegrade) {
+        if (item.isDegradable) {
             adjustQuality(item, degradeRate);
         }
-        if (item.name.equals(AGED_BRIE)) {
+        if (!item.isDegradable && !item.isConjuredItem && !item.isLegendaryItem) {
             adjustQuality(item, 1);
-            }
 
-        if (item.name.equals(BACKSTAGE_PASSES)) {
-            adjustQuality(item, 1);
-            if (item.sellIn < 11) {
+            if (item.name.equals(BACKSTAGE_PASSES)) {
+                if (item.sellIn < 11) {
                 adjustQuality(item, 1);
-            }
+                }
 
-            if (item.sellIn < 6) {
+                if (item.sellIn < 6) {
                 adjustQuality(item, 1);
+                }
+                if (isExpired) item.quality = 0;
             }
         }
 
-        if (!item.name.equals(SULFURAS)) {
+        if (!item.isLegendaryItem) {
             item.sellIn = item.sellIn - 1;
         }
 
-        if (item.sellIn < 0) {
-            if (doesDegrade) {
+        if (isExpired) {
+            if (item.isDegradable) {
                 adjustQuality(item, degradeRate);
             }
         }

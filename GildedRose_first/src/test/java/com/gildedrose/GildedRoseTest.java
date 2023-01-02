@@ -57,7 +57,7 @@ class GildedRoseTest {
     @Test
         // Sulfuras never changes quality, no matter the sellIn value
     void sulfurasNegativeSellin() {
-        Item[] items = {new Item("Sulfuras, Hand of Ragnaros", -1, 80) };
+        Item[] items = {new Item("Sulfuras, Hand of Ragnaros", -1, 80, false) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(80, app.items[0].quality);
@@ -65,7 +65,7 @@ class GildedRoseTest {
     @Test
         // Conjured items lose quality twice as fast as other products, also when sellIn is negative
     void conjuredNegativeSellin() {
-        Item[] items = {new Item("Conjured Mana Cake", -1, 6) };
+        Item[] items = {new Item("Conjured Mana Cake", -1, 6, true) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(2, app.items[0].quality);
@@ -73,7 +73,7 @@ class GildedRoseTest {
     @Test
         // Conjured items lose quality twice as fast as other products, also when sellIn is negative
     void conjuredPositiveSellin() {
-        Item[] items = {new Item("Conjured Mana Cake", 3, 6) };
+        Item[] items = {new Item("Conjured Mana Cake", 3, 6, true) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(4, app.items[0].quality);
@@ -84,7 +84,7 @@ class GildedRoseTest {
         // quality = 0 when sellIn is negative
         // quality for products cant exceed past 50
     void backstagePassesSellinFiveorLessMaxTest() {
-        Item[] items = {new Item("Backstage passes to a TAFKAL80ETC concert", 3, 49) };
+        Item[] items = {new Item("Backstage passes to a TAFKAL80ETC concert", 3, 49, false) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
@@ -95,7 +95,7 @@ class GildedRoseTest {
         // quality = 0 when sellIn is negative
         // quality for products cant exceed past 50
     void backstagePassesSellinBetweenTenAndSixMaxTest() {
-        Item[] items = {new Item("Backstage passes to a TAFKAL80ETC concert", 7, 49) };
+        Item[] items = {new Item("Backstage passes to a TAFKAL80ETC concert", 7, 49, false) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
@@ -106,7 +106,7 @@ class GildedRoseTest {
         // quality = 0 when sellIn is negative
         // quality for products cant exceed past 50
     void backstagePassesNegativeSellin() {
-        Item[] items = {new Item("Backstage passes to a TAFKAL80ETC concert", -5, 49) };
+        Item[] items = {new Item("Backstage passes to a TAFKAL80ETC concert", -5, 49, false) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
@@ -117,7 +117,7 @@ class GildedRoseTest {
         // quality = 0 when sellIn is negative
         // quality for products cant exceed past 50
     void backstagePassesSellinFiveorLess() {
-        Item[] items = {new Item("Backstage passes to a TAFKAL80ETC concert", 3, 40) };
+        Item[] items = {new Item("Backstage passes to a TAFKAL80ETC concert", 3, 40, false) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(43, app.items[0].quality);
@@ -128,7 +128,7 @@ class GildedRoseTest {
         // quality = 0 when sellIn is negative
         // quality for products cant exceed past 50
     void backstagePassesSellinBetweenTenAndSix() {
-        Item[] items = {new Item("Backstage passes to a TAFKAL80ETC concert", 7, 40)};
+        Item[] items = {new Item("Backstage passes to a TAFKAL80ETC concert", 7, 40, false)};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(42, app.items[0].quality);

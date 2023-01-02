@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 public class GildedRose {
+    public static final String AGED_BRIE = "Aged Brie";
     public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
     Item[] items;
 
@@ -60,6 +61,11 @@ public class GildedRose {
         if (isExpired) {
             if (item.isDegradable) {
                 adjustQuality(item, degradeRate);
+            }
+            if (item.name.equals(AGED_BRIE)) {
+                adjustQuality(item, 1);
+            //first step = local variable int adjustment
+                // item.quality + adjustment = put in new method, see below
             }
         }
     }

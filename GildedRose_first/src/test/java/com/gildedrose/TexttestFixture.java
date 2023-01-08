@@ -18,7 +18,7 @@ public class TexttestFixture {
                 new Item("Conjured Mana Cake", -1, 6) };
 
 
-        GildedRose app = new GildedRose(items);
+        GildedRose_Refactored app = new GildedRose_Refactored(items);
 
         int days = 2;
         if (args.length > 0) {

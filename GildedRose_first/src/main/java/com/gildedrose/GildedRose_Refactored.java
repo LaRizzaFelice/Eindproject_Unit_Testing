@@ -46,11 +46,11 @@ public class GildedRose_Refactored {
 
         if (item.name.equals(BACKSTAGE_PASSES)) {
             adjustQuality(item, 1);
-            if (item.sellIn < 11) {
+            if (item.sellIn <= 10) {
                 adjustQuality(item, 1);
             }
 
-            if (item.sellIn < 6) {
+            if (item.sellIn <= 5) {
                 adjustQuality(item, 1);
             }
         }
